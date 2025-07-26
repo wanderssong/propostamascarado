@@ -1,7 +1,9 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Proposta - El_mascarado</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
@@ -10,192 +12,476 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
       color: #fff;
+      perspective: 1200px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
     header {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 30px 20px;
       background-color: #111;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+      transform-style: preserve-3d;
+      perspective: 800px;
+      animation: headerEntrance 1s ease forwards;
     }
+
     header img {
-      height: 60px;
-      animation: fadeInDown 1s ease forwards;
+      height: 70px;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 0 5px #ff0000);
+      transition: transform 0.5s ease, filter 0.5s ease;
+      cursor: pointer;
+      will-change: transform;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    /* efeito hover desktop */
+    header img:hover {
+      transform: rotateY(15deg) rotateX(10deg) scale(1.1);
+      filter: drop-shadow(0 0 15px #ff3333);
+    }
+
+    /* efeito toque mobile */
+    header img.touch-effect {
+      transform: rotateY(15deg) rotateX(10deg) scale(1.1);
+      filter: drop-shadow(0 0 15px #ff3333);
+    }
+
+    @keyframes headerEntrance {
+      0% {
+        opacity: 0;
+        transform: translateZ(-200px) translateY(-40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateZ(0) translateY(0);
+      }
+    }
+
     .section {
       padding: 60px 20px;
-      max-width: 800px;
-      margin: auto;
+      max-width: 850px;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      perspective: 800px;
     }
+
     .section h2 {
       text-align: center;
       margin-bottom: 30px;
-      font-size: 28px;
+      font-size: 32px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px #ff3333;
+      user-select: none;
     }
+
     .section p {
       text-align: center;
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #ddd;
+      user-select: text;
     }
-    .gallery, .team {
+
+    .gallery,
+    .team {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
+      transform-style: preserve-3d;
     }
-    .gallery img, .team-member img {
+
+    .gallery img,
+    .team-member img {
       width: 100%;
-      max-width: 240px;
+      max-width: 260px;
       height: 180px;
       object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(255,255,255,0.1);
+      border-radius: 14px;
+      box-shadow:
+        0 8px 12px rgba(255, 51, 51, 0.3),
+        0 12px 24px rgba(0, 0, 0, 0.8);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      will-change: transform;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    /* hover desktop */
+    .gallery img:hover,
+    .team-member img:hover {
+      transform: rotateX(10deg) rotateY(10deg) scale(1.05);
+      box-shadow:
+        0 14px 20px rgba(255, 51, 51, 0.6),
+        0 24px 48px rgba(0, 0, 0, 0.9);
+      z-index: 10;
+    }
+
+    /* toque mobile ativando efeito 3d */
+    .gallery img.touch-effect,
+    .team-member img.touch-effect {
+      transform: rotateX(10deg) rotateY(10deg) scale(1.05);
+      box-shadow:
+        0 14px 20px rgba(255, 51, 51, 0.6),
+        0 24px 48px rgba(0, 0, 0, 0.9);
+      z-index: 10;
+    }
+
     .team {
-      flex-direction: row;
-      gap: 30px;
+      gap: 40px;
       justify-content: center;
+      margin-top: 40px;
     }
+
     .team-member {
       text-align: center;
-      max-width: 240px;
+      max-width: 260px;
+      user-select: none;
+      transition: transform 0.3s ease;
     }
+
+    .team-member:hover {
+      transform: translateZ(20px);
+    }
+
     .team-member span {
       display: block;
-      margin-top: 10px;
-      font-weight: bold;
+      margin-top: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.8px;
+      color: #ff6666;
+      text-shadow: 0 0 6px #ff6666;
+      user-select: none;
     }
+
     .cta {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      margin-top: 40px;
+      gap: 24px;
+      margin-top: 60px;
+      perspective: 900px;
+      user-select: none;
     }
+
     .cta button {
-      background-color: white;
-      color: black;
+      background: linear-gradient(145deg, #ff3333, #cc0000);
+      color: #fff;
       border: none;
-      padding: 15px 30px;
-      border-radius: 30px;
-      font-size: 16px;
+      padding: 18px 48px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      box-shadow:
+        0 6px 8px rgba(255, 51, 133, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
+
     .cta button:hover {
-      transform: scale(1.05);
-      background: #ddd;
+      transform: translateZ(20px) scale(1.1);
+      box-shadow:
+        0 14px 20px rgba(255, 51, 51, 0.9),
+        inset 0 4px 8px rgba(255, 255, 255, 0.3);
     }
+
+    /* Modal */
     .modal {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.8);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
       display: flex;
       align-items: center;
       justify-content: center;
       display: none;
-      z-index: 999;
+      z-index: 9999;
+      perspective: 1200px;
+      -webkit-overflow-scrolling: touch;
     }
+
     .modal-content {
-      background-color: #fff;
-      color: #000;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 400px;
+      background-color: #111;
+      color: #fff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      max-width: 450px;
       width: 90%;
       text-align: center;
+      box-shadow:
+        0 15px 40px rgba(255, 51, 51, 0.7),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+      transform-style: preserve-3d;
+      animation: modalPop 0.4s ease forwards;
     }
+
+    @keyframes modalPop {
+      0% {
+        opacity: 0;
+        transform: translateZ(-200px) scale(0.85);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateZ(0) scale(1);
+      }
+    }
+
     .modal-content input {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      font-size: 16px;
+      padding: 14px 18px;
+      margin-top: 18px;
+      margin-bottom: 28px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #fff;
+      box-shadow: inset 0 0 8px rgba(255, 51, 51, 0.5);
+      transition: box-shadow 0.3s ease;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
     }
+
+    .modal-content input:focus {
+      box-shadow: 0 0 12px #ff33aa;
+      background-color: #111;
+    }
+
     .modal-content button {
-      background: black;
+      background: linear-gradient(145deg, #ff3333, #cc0000);
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 32px;
+      border-radius: 30px;
+      font-size: 18px;
       cursor: pointer;
+      box-shadow: 0 6px 15px rgba(255, 51, 51, 0.8);
+      transition: background 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+
+    .modal-content button:hover {
+      background: linear-gradient(145deg, #ff6666, #e60000);
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(255, 102, 102, 0.9);
+    }
+
+    ::selection {
+      background: #ff3333;
+      color: #fff;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .section h2 {
+        font-size: 24px;
+      }
+
+      .section p {
+        font-size: 16px;
+        padding: 0 10px;
+      }
+
+      .gallery img,
+      .team-member img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .team {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .cta button {
+        width: 90%;
+        padding: 15px 0;
+      }
+
+      .modal-content {
+        padding: 20px 25px;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <img src="img/logo.png" alt="Logo El_mascarado">
-  </header>  <section class="section" data-aos="fade-up">
+    <img src="img/logo.png" alt="Logo El_mascarado" id="logo" />
+  </header>
+
+  <section class="section" data-aos="fade-up">
     <h2>Proposta Fotográfica</h2>
     <p>
-      O El_mascarado é especializado em capturar momentos únicos com autenticidade, estilo e emoção. <br><br>
-      Com uma equipe dedicada e apaixonada pela arte da fotografia, oferecemos um ensaio completo por apenas <strong>R$500,00</strong>.<br><br>
+      O El_mascarado é especializado em capturar momentos únicos com autenticidade, estilo e emoção. <br /><br />
+      Com uma equipe dedicada e apaixonada pela arte da fotografia, oferecemos um ensaio completo por apenas
+      <strong>R$500,00</strong>.<br /><br />
       Incluímos direção de cena, edição profissional, e toda atenção para que cada clique conte uma história.
     </p>
-  </section>  <section class="section gallery" data-aos="fade-up">
+  </section>
+
+  <section class="section gallery" data-aos="fade-up">
     <h2>Momentos Capturados</h2>
-    <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6467.jpg?alt=media&token=1b798519-166f-409f-9672-019ff01de535" alt="Foto 1" />
-    <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2145.jpg?alt=media&token=69a487b1-3b5b-425e-a2f8-e80fd7112e6a" alt="Foto 2" />
-    <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5707.jpg?alt=media&token=0b6baec2-5e07-459b-afc9-20ba80a763cb" alt="Foto 3" />
-    <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6481.jpg?alt=media&token=f24f3536-ba3f-4953-a62b-f94be9f849bb" alt="Foto 4" />
-  </section>  <section class="section" data-aos="fade-up">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6467.jpg?alt=media&token=1b798519-166f-409f-9672-019ff01de535"
+      alt="Foto 1" class="touchable" />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2145.jpg?alt=media&token=69a487b1-3b5b-425e-a2f8-e80fd7112e6a"
+      alt="Foto 2" class="touchable" />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5707.jpg?alt=media&token=0b6baec2-5e07-459b-afc9-20ba80a763cb"
+      alt="Foto 3" class="touchable" />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6481.jpg?alt=media&token=f24f3536-ba3f-4953-a62b-f94be9f849bb"
+      alt="Foto 4" class="touchable" />
+  </section>
+
+  <section class="section" data-aos="fade-up">
     <h2>Nossa Equipe</h2>
     <div class="team">
       <div class="team-member">
-        <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5778.jpg?alt=media&token=8fa04261-b1df-439e-9de3-b158f1b19e97" alt="Gislaine">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5778.jpg?alt=media&token=8fa04261-b1df-439e-9de3-b158f1b19e97"
+          alt="Gislaine" class="touchable" />
         <span>Gislaine</span>
       </div>
       <div class="team-member">
-        <img src="img/logo.png" alt="El Mascarado">
+        <img src="img/logo.png" alt="El Mascarado" class="touchable" />
         <span>El Mascarado</span>
       </div>
       <div class="team-member">
-        <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5591.jpg?alt=media&token=5eeeb1a2-8e03-4cb9-a1a2-c52557aa5137" alt="Gisleide">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5591.jpg?alt=media&token=5eeeb1a2-8e03-4cb9-a1a2-c52557aa5137"
+          alt="Gisleide" class="touchable" />
         <span>Gisleide</span>
       </div>
     </div>
-  </section>  <section class="section cta" data-aos="fade-up">
+  </section>
+
+  <section class="section cta" data-aos="fade-up">
     <button onclick="abrirModalAprovar()">Vamos fotografar?</button>
     <button onclick="abrirModalProposta()">Fazer outra proposta</button>
-  </section>  <div id="modalAprovar" class="modal">
-    <div class="modal-content">
-      <h3>Digite seu nome:</h3>
-      <input type="text" id="nomeCliente" placeholder="Seu nome" />
+  </section>
+
+  <div id="modalAprovar" class="modal">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalAprovarTitle">
+      <h3 id="modalAprovarTitle">Digite seu nome:</h3>
+      <input type="text" id="nomeCliente" placeholder="Seu nome" required />
       <button onclick="enviarAprovacao()">Enviar para WhatsApp</button>
     </div>
-  </div>  <div id="modalProposta" class="modal">
-    <div class="modal-content">
-      <h3>Digite sua proposta:</h3>
-      <input type="text" id="propostaCliente" placeholder="Minha proposta é..." />
+  </div>
+
+  <div id="modalProposta" class="modal">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalPropostaTitle">
+      <h3 id="modalPropostaTitle">Digite sua proposta:</h3>
+      <input type="text" id="propostaCliente" placeholder="Minha proposta é..." required />
       <button onclick="enviarProposta()">Enviar para WhatsApp</button>
     </div>
-  </div>  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>  <script>
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
     AOS.init();
+
+    // Para controlar toque 3d: adiciona/remova classe .touch-effect no toque
+
+    function toggleTouchEffect(e) {
+      const el = e.currentTarget;
+      // Se já tiver a classe, remove
+      if (el.classList.contains('touch-effect')) {
+        el.classList.remove('touch-effect');
+      } else {
+        // Remove de todos antes para evitar múltiplos ativos
+        document.querySelectorAll('.touch-effect').forEach(elem => {
+          elem.classList.remove('touch-effect');
+        });
+        el.classList.add('touch-effect');
+      }
+    }
+
+    // Aplica evento para imagens e logo com classe touchable
+    document.querySelectorAll('.touchable').forEach(el => {
+      el.addEventListener('touchstart', toggleTouchEffect);
+    });
+
+    // Para o logo que não tem classe 'touchable', adicionamos aqui
+    document.getElementById('logo').addEventListener('touchstart', toggleTouchEffect);
 
     function abrirModalAprovar() {
       document.getElementById('modalAprovar').style.display = 'flex';
+      document.getElementById('nomeCliente').focus();
     }
+
     function abrirModalProposta() {
       document.getElementById('modalProposta').style.display = 'flex';
+      document.getElementById('propostaCliente').focus();
     }
+
     function enviarAprovacao() {
-      const nome = document.getElementById('nomeCliente').value;
+      const nome = document.getElementById('nomeCliente').value.trim();
+      if (!nome) {
+        alert('Por favor, digite seu nome.');
+        return;
+      }
       const msg = `Oi meu nome é ${nome} e aprovo a proposta!`;
       window.open(`https://wa.me/5568996129443?text=${encodeURIComponent(msg)}`, '_blank');
+      fecharModais();
     }
+
     function enviarProposta() {
-      const proposta = document.getElementById('propostaCliente').value;
+      const proposta = document.getElementById('propostaCliente').value.trim();
+      if (!proposta) {
+        alert('Por favor, digite sua proposta.');
+        return;
+      }
       const msg = `Olá! Gostaria de sugerir outra proposta: ${proposta}`;
       window.open(`https://wa.me/5568996129443?text=${encodeURIComponent(msg)}`, '_blank');
+      fecharModais();
     }
+
+    function fecharModais() {
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.style.display = 'none';
+      });
+    }
+
     document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
+      modal.addEventListener('click', e => {
+        if (e.target === modal) fecharModais();
       });
     });
-  </script></body>
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') fecharModais();
+    });
+  </script>
+</body>
+
 </html>
