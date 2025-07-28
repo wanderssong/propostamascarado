@@ -3,179 +3,121 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proposta - El_mascarado</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
+      background: #000;
       color: #fff;
-      perspective: 1200px;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      perspective: 1000px;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #000;
     }
 
     header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      text-align: center;
       padding: 30px 20px;
-      background-color: #111;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-      transform-style: preserve-3d;
-      perspective: 800px;
-      animation: headerEntrance 1s ease forwards;
+      animation: fadeInDown 1s ease forwards;
     }
 
     header img {
-      height: 70px;
-      transform-style: preserve-3d;
-      filter: drop-shadow(0 0 5px #ff0000);
+      height: 80px;
+      filter: drop-shadow(0 0 10px #ff0000);
       transition: transform 0.5s ease, filter 0.5s ease;
       cursor: pointer;
-      will-change: transform;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
 
-    /* efeito hover desktop */
     header img:hover {
-      transform: rotateY(15deg) rotateX(10deg) scale(1.1);
-      filter: drop-shadow(0 0 15px #ff3333);
+      transform: rotateY(10deg) scale(1.1);
+      filter: drop-shadow(0 0 25px #ff3333);
     }
 
-    /* efeito toque mobile */
-    header img.touch-effect {
-      transform: rotateY(15deg) rotateX(10deg) scale(1.1);
-      filter: drop-shadow(0 0 15px #ff3333);
-    }
-
-    @keyframes headerEntrance {
-      0% {
-        opacity: 0;
-        transform: translateZ(-200px) translateY(-40px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateZ(0) translateY(0);
-      }
-    }
-
-    .section {
+    section {
       padding: 60px 20px;
-      max-width: 850px;
+      max-width: 900px;
       margin: 0 auto;
-      transform-style: preserve-3d;
-      perspective: 800px;
+      text-align: center;
     }
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
+    section h2 {
       font-size: 32px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 8px #ff3333;
-      user-select: none;
+      text-shadow: 0 0 10px #ff3333;
     }
 
-    .section p {
-      text-align: center;
-      font-size: 20px;
-      line-height: 1.8;
-      max-width: 700px;
-      margin: 0 auto;
+    section p {
+      font-size: 18px;
+      line-height: 1.6;
       color: #ddd;
-      user-select: text;
     }
 
-    .gallery,
+    .preco {
+      font-size: 24px;
+      color: #ff6666;
+      font-weight: bold;
+      margin-top: 10px;
+      text-shadow: 0 0 6px #ff3333;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 12px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      box-shadow: 0 10px 20px rgba(255, 51, 51, 0.4);
+    }
+
+    .gallery img:hover {
+      transform: rotateX(8deg) rotateY(8deg) scale(1.05);
+      box-shadow: 0 20px 40px rgba(255, 51, 51, 0.7);
+    }
+
     .team {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 24px;
-      transform-style: preserve-3d;
-    }
-
-    .gallery img,
-    .team-member img {
-      width: 100%;
-      max-width: 260px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 14px;
-      box-shadow:
-        0 8px 12px rgba(255, 51, 51, 0.3),
-        0 12px 24px rgba(0, 0, 0, 0.8);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      cursor: pointer;
-      transform-style: preserve-3d;
-      will-change: transform;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* hover desktop */
-    .gallery img:hover,
-    .team-member img:hover {
-      transform: rotateX(10deg) rotateY(10deg) scale(1.05);
-      box-shadow:
-        0 14px 20px rgba(255, 51, 51, 0.6),
-        0 24px 48px rgba(0, 0, 0, 0.9);
-      z-index: 10;
-    }
-
-    /* toque mobile ativando efeito 3d */
-    .gallery img.touch-effect,
-    .team-member img.touch-effect {
-      transform: rotateX(10deg) rotateY(10deg) scale(1.05);
-      box-shadow:
-        0 14px 20px rgba(255, 51, 51, 0.6),
-        0 24px 48px rgba(0, 0, 0, 0.9);
-      z-index: 10;
-    }
-
-    .team {
-      gap: 40px;
-      justify-content: center;
+      gap: 30px;
       margin-top: 40px;
     }
 
     .team-member {
       text-align: center;
       max-width: 260px;
-      user-select: none;
-      transition: transform 0.3s ease;
     }
 
-    .team-member:hover {
-      transform: translateZ(20px);
+    .team-member img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(255, 51, 51, 0.4);
+      transition: transform 0.4s;
+    }
+
+    .team-member img:hover {
+      transform: scale(1.05);
     }
 
     .team-member span {
       display: block;
-      margin-top: 12px;
-      font-weight: 700;
+      margin-top: 10px;
       font-size: 18px;
-      letter-spacing: 0.8px;
       color: #ff6666;
       text-shadow: 0 0 6px #ff6666;
-      user-select: none;
-    }
-
-    .cta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      margin-top: 60px;
-      perspective: 900px;
-      user-select: none;
     }
 
     .cta button {
@@ -185,182 +127,112 @@
       padding: 18px 48px;
       border-radius: 50px;
       font-size: 18px;
-      font-weight: 600;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow:
-        0 6px 8px rgba(255, 51, 133, 0.6),
-        inset 0 2px 4px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      transform-style: preserve-3d;
-      will-change: transform;
       text-transform: uppercase;
-      letter-spacing: 1.1px;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px #ff3333;
+      animation: pulse 2s infinite;
+      margin: 20px;
     }
 
-    .cta button:hover {
-      transform: translateZ(20px) scale(1.1);
-      box-shadow:
-        0 14px 20px rgba(255, 51, 51, 0.9),
-        inset 0 4px 8px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      display: none;
-      z-index: 9999;
-      perspective: 1200px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .modal-content {
-      background-color: #111;
-      color: #fff;
-      padding: 30px 40px;
-      border-radius: 16px;
-      max-width: 450px;
-      width: 90%;
-      text-align: center;
-      box-shadow:
-        0 15px 40px rgba(255, 51, 51, 0.7),
-        inset 0 0 20px rgba(255, 255, 255, 0.05);
-      transform-style: preserve-3d;
-      animation: modalPop 0.4s ease forwards;
-    }
-
-    @keyframes modalPop {
+    @keyframes pulse {
       0% {
-        opacity: 0;
-        transform: translateZ(-200px) scale(0.85);
+        box-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333;
+      }
+
+      50% {
+        box-shadow: 0 0 25px #ff6666, 0 0 35px #ff3333;
       }
 
       100% {
-        opacity: 1;
-        transform: translateZ(0) scale(1);
+        box-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333;
       }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 25px #ff3333;
     }
 
     .modal-content input {
       width: 100%;
-      padding: 14px 18px;
-      margin-top: 18px;
-      margin-bottom: 28px;
-      font-size: 18px;
-      border-radius: 10px;
+      padding: 12px;
+      margin: 20px 0;
+      border-radius: 8px;
       border: none;
-      outline: none;
-      background-color: #222;
+      background: #222;
       color: #fff;
-      box-shadow: inset 0 0 8px rgba(255, 51, 51, 0.5);
-      transition: box-shadow 0.3s ease;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
-
-    .modal-content input:focus {
-      box-shadow: 0 0 12px #ff33aa;
-      background-color: #111;
     }
 
     .modal-content button {
-      background: linear-gradient(145deg, #ff3333, #cc0000);
-      color: white;
-      border: none;
-      padding: 12px 32px;
-      border-radius: 30px;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(255, 51, 51, 0.8);
-      transition: background 0.3s ease, transform 0.3s ease;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .modal-content button:hover {
-      background: linear-gradient(145deg, #ff6666, #e60000);
-      transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(255, 102, 102, 0.9);
-    }
-
-    ::selection {
       background: #ff3333;
       color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    /* Responsividade */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 600px) {
-      .section h2 {
-        font-size: 24px;
-      }
-
-      .section p {
-        font-size: 16px;
-        padding: 0 10px;
-      }
-
-      .gallery img,
-      .team-member img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .team {
-        flex-direction: column;
-        gap: 30px;
-      }
-
       .cta button {
         width: 90%;
-        padding: 15px 0;
-      }
-
-      .modal-content {
-        padding: 20px 25px;
       }
     }
   </style>
 </head>
 
 <body>
+  <div id="particles-js"></div>
+
   <header>
-    <img src="img/logo.png" alt="Logo El_mascarado" id="logo" />
+    <img src="img/logo.png" alt="Logo El_mascarado">
   </header>
 
-  <section class="section" data-aos="fade-up">
+  <section data-aos="fade-up">
     <h2>Proposta Fotográfica</h2>
-    <p>
-      O El_mascarado é especializado em capturar momentos únicos com autenticidade, estilo e emoção. <br /><br />
-      Com uma equipe dedicada e apaixonada pela arte da fotografia, oferecemos um ensaio completo por apenas
-      <strong>R$500,00</strong>.<br /><br />
-      Incluímos direção de cena, edição profissional, e toda atenção para que cada clique conte uma história.
-    </p>
+    <p>Capturamos momentos únicos com estilo e emoção. Oferecemos direção de cena, edição profissional e todo cuidado em
+      cada clique.</p>
+    <p class="preco">Valor promocional: R$500,00</p>
   </section>
 
-  <section class="section gallery" data-aos="fade-up">
+  <section class="gallery" data-aos="fade-up">
     <h2>Momentos Capturados</h2>
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6467.jpg?alt=media&token=1b798519-166f-409f-9672-019ff01de535"
-      alt="Foto 1" class="touchable" />
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6467.jpg?alt=media&token=1b798519-166f-409f-9672-019ff01de535">
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2145.jpg?alt=media&token=69a487b1-3b5b-425e-a2f8-e80fd7112e6a"
-      alt="Foto 2" class="touchable" />
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2145.jpg?alt=media&token=69a487b1-3b5b-425e-a2f8-e80fd7112e6a">
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5707.jpg?alt=media&token=0b6baec2-5e07-459b-afc9-20ba80a763cb"
-      alt="Foto 3" class="touchable" />
-    <img
-      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6481.jpg?alt=media&token=f24f3536-ba3f-4953-a62b-f94be9f849bb"
-      alt="Foto 4" class="touchable" />
+      src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5707.jpg?alt=media&token=0b6baec2-5e07-459b-afc9-20ba80a763cb">
   </section>
 
   <section class="section" data-aos="fade-up">
@@ -369,117 +241,91 @@
       <div class="team-member">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5778.jpg?alt=media&token=8fa04261-b1df-439e-9de3-b158f1b19e97"
-          alt="Gislaine" class="touchable" />
+          alt="Gislaine">
         <span>Gislaine</span>
       </div>
       <div class="team-member">
-        <img src="img/logo.png" alt="El Mascarado" class="touchable" />
+        <img src="img/logo.png" alt="El Mascarado">
         <span>El Mascarado</span>
       </div>
       <div class="team-member">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5591.jpg?alt=media&token=5eeeb1a2-8e03-4cb9-a1a2-c52557aa5137"
-          alt="Gisleide" class="touchable" />
+          alt="Gisleide">
         <span>Gisleide</span>
       </div>
     </div>
   </section>
 
-  <section class="section cta" data-aos="fade-up">
-    <button onclick="abrirModalAprovar()">Vamos fotografar?</button>
-    <button onclick="abrirModalProposta()">Fazer outra proposta</button>
+  <section class="cta">
+    <button onclick="abrirModal()">Vamos fotografar?</button>
   </section>
 
-  <div id="modalAprovar" class="modal">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalAprovarTitle">
-      <h3 id="modalAprovarTitle">Digite seu nome:</h3>
-      <input type="text" id="nomeCliente" placeholder="Seu nome" required />
-      <button onclick="enviarAprovacao()">Enviar para WhatsApp</button>
-    </div>
-  </div>
-
-  <div id="modalProposta" class="modal">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalPropostaTitle">
-      <h3 id="modalPropostaTitle">Digite sua proposta:</h3>
-      <input type="text" id="propostaCliente" placeholder="Minha proposta é..." required />
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>Promoção expira em <span id="contador">10</span>s</h3>
+      <input type="text" id="nomeCliente" placeholder="Seu nome">
       <button onclick="enviarProposta()">Enviar para WhatsApp</button>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
 
-    // Para controlar toque 3d: adiciona/remova classe .touch-effect no toque
-
-    function toggleTouchEffect(e) {
-      const el = e.currentTarget;
-      // Se já tiver a classe, remove
-      if (el.classList.contains('touch-effect')) {
-        el.classList.remove('touch-effect');
-      } else {
-        // Remove de todos antes para evitar múltiplos ativos
-        document.querySelectorAll('.touch-effect').forEach(elem => {
-          elem.classList.remove('touch-effect');
-        });
-        el.classList.add('touch-effect');
-      }
+    function abrirModal() {
+      document.getElementById('modal').style.display = 'flex';
+      let segundos = 10;
+      const el = document.getElementById('contador');
+      const intervalo = setInterval(() => {
+        segundos--;
+        el.textContent = segundos;
+        if (segundos <= 0) {
+          clearInterval(intervalo);
+          alert("Tempo esgotado! A proposta pode não estar mais disponível.");
+          fecharModal();
+        }
+      }, 1000);
     }
 
-    // Aplica evento para imagens e logo com classe touchable
-    document.querySelectorAll('.touchable').forEach(el => {
-      el.addEventListener('touchstart', toggleTouchEffect);
-    });
-
-    // Para o logo que não tem classe 'touchable', adicionamos aqui
-    document.getElementById('logo').addEventListener('touchstart', toggleTouchEffect);
-
-    function abrirModalAprovar() {
-      document.getElementById('modalAprovar').style.display = 'flex';
-      document.getElementById('nomeCliente').focus();
-    }
-
-    function abrirModalProposta() {
-      document.getElementById('modalProposta').style.display = 'flex';
-      document.getElementById('propostaCliente').focus();
-    }
-
-    function enviarAprovacao() {
-      const nome = document.getElementById('nomeCliente').value.trim();
-      if (!nome) {
-        alert('Por favor, digite seu nome.');
-        return;
-      }
-      const msg = `Oi meu nome é ${nome} e aprovo a proposta!`;
-      window.open(`https://wa.me/5568996129443?text=${encodeURIComponent(msg)}`, '_blank');
-      fecharModais();
+    function fecharModal() {
+      document.getElementById('modal').style.display = 'none';
     }
 
     function enviarProposta() {
-      const proposta = document.getElementById('propostaCliente').value.trim();
-      if (!proposta) {
-        alert('Por favor, digite sua proposta.');
+      const nome = document.getElementById('nomeCliente').value.trim();
+      if (!nome) {
+        alert("Digite seu nome!");
         return;
       }
-      const msg = `Olá! Gostaria de sugerir outra proposta: ${proposta}`;
-      window.open(`https://wa.me/5568996129443?text=${encodeURIComponent(msg)}`, '_blank');
-      fecharModais();
+      const mensagem = `Oi, meu nome é ${nome} e quero fechar o ensaio!`;
+      window.open(`https://wa.me/5568996129443?text=${encodeURIComponent(mensagem)}`);
+      fecharModal();
     }
 
-    function fecharModais() {
-      document.querySelectorAll('.modal').forEach(modal => {
-        modal.style.display = 'none';
-      });
-    }
-
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('click', e => {
-        if (e.target === modal) fecharModais();
-      });
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') fecharModais();
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ff3333" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 4 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ff6666",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.2,
+          direction: "none",
+          random: false,
+          out_mode: "bounce"
+        }
+      }
     });
   </script>
 </body>
