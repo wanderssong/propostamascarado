@@ -5,13 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proposta Fotográfica | El Mascarado</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Lora', serif;
       background-color: #f9f9f9;
       color: #222;
+      overflow-x: hidden;
     }
 
     header {
@@ -74,6 +77,12 @@
       max-width: 160px;
       border-radius: 8px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
     .team {
@@ -102,11 +111,6 @@
       color: #666;
     }
 
-    .cta {
-      text-align: center;
-      margin: 60px 0;
-    }
-
     .cta button {
       background-color: #222;
       color: #fff;
@@ -122,20 +126,22 @@
       background-color: #444;
     }
 
-    .modal {
+    .modal,
+    .image-modal {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
       z-index: 1000;
     }
 
-    .modal-content {
+    .modal-content,
+    .image-modal-content {
       background: #fff;
       padding: 40px;
       border-radius: 8px;
@@ -143,6 +149,20 @@
       width: 90%;
       max-width: 400px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-modal-content {
+      max-width: 90%;
+      padding: 10px;
+      background: none;
+    }
+
+    .image-modal-content img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      object-fit: contain;
     }
 
     .modal-content input {
@@ -165,14 +185,16 @@
 </head>
 
 <body>
-  <header>
+  <header data-aos="fade-down">
     <img src="img/logo.png" alt="El Mascarado">
   </header>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Proposta de Ensaio Fotográfico Profissional</h2>
-    <p>Oferecemos experiências fotográficas personalizadas com direção criativa, edição de alto padrão e atenção aos detalhes que eternizam momentos únicos com sofisticação e sensibilidade.</p>
-    <p class="preco">Investimento: <strong>R$ 500,00</strong> <span style="font-weight: normal;">(valor promocional por tempo limitado)</span></p>
+    <p>Oferecemos experiências fotográficas personalizadas com direção criativa, edição de alto padrão e atenção aos
+      detalhes que eternizam momentos únicos com sofisticação e sensibilidade.</p>
+    <p class="preco">Investimento: <strong>R$ 500,00</strong> <span style="font-weight: normal;">(valor promocional por
+        tempo limitado)</span></p>
     <ul>
       <li>✔ Direção de cena personalizada</li>
       <li>✔ Sessão de até 2h em local à escolha</li>
@@ -181,28 +203,44 @@
     </ul>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Portfólio</h2>
     <div class="gallery">
-      <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6467.jpg?alt=media&token=1b798519-166f-409f-9672-019ff01de535">
-      <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2145.jpg?alt=media&token=69a487b1-3b5b-425e-a2f8-e80fd7112e6a">
-      <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5707.jpg?alt=media&token=0b6baec2-5e07-459b-afc9-20ba80a763cb">
-      <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5823.jpg?alt=media&token=a69dcd2c-4034-43a2-89ec-c5c36fcd8085">
-      <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2088.jpg?alt=media&token=f5ab2c17-1a6d-4e43-84ef-2dc9d3288a40">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6467.jpg?alt=media&token=1b798519-166f-409f-9672-019ff01de535"
+        onclick="abrirImagem(this.src)">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/ALBUN%20CLEBESON%2F_DSC2145.jpg?alt=media&token=69a487b1-3b5b-425e-a2f8-e80fd7112e6a"
+        onclick="abrirImagem(this.src)">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5707.jpg?alt=media&token=0b6baec2-5e07-459b-afc9-20ba80a763cb"
+        onclick="abrirImagem(this.src)">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/LETICIA%20BRUNA%2F_DSC6739.jpg?alt=media&token=ba59b74d-9f35-41bd-8144-26fdfa2d67a2"
+        onclick="abrirImagem(this.src)">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/LETICIA%20BRUNA%2F_DSC6802%20(1).jpg?alt=media&token=2c7d4baf-92e4-451c-b4c0-e0c4c495e297"
+        onclick="abrirImagem(this.src)">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5954.jpg?alt=media&token=da30b91a-1aa4-485b-b053-e168eadfa16e"
+        onclick="abrirImagem(this.src)">
     </div>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Sobre Nosso Trabalho</h2>
-    <p>Nossa missão é ir além do clique: buscamos criar uma experiência sensível, artística e inesquecível. Cada ensaio é planejado com cuidado, respeitando a individualidade e a essência de cada cliente.</p>
-    <p>Trabalhamos com equipamentos profissionais, técnicas modernas de iluminação e um olhar afiado para capturar o que há de mais belo e verdadeiro em cada instante.</p>
+    <p>Nossa missão é ir além do clique: buscamos criar uma experiência sensível, artística e inesquecível. Cada ensaio
+      é planejado com cuidado, respeitando a individualidade e a essência de cada cliente.</p>
+    <p>Trabalhamos com equipamentos profissionais, técnicas modernas de iluminação e um olhar afiado para capturar o que
+      há de mais belo e verdadeiro em cada instante.</p>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Nossa Equipe</h2>
     <div class="team">
       <div class="team-member">
-        <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5778.jpg?alt=media&token=8fa04261-b1df-439e-9de3-b158f1b19e97">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5778.jpg?alt=media&token=8fa04261-b1df-439e-9de3-b158f1b19e97">
         <span>Gislaine</span>
       </div>
       <div class="team-member">
@@ -210,15 +248,16 @@
         <span>El Mascarado</span>
       </div>
       <div class="team-member">
-        <img src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5591.jpg?alt=media&token=5eeeb1a2-8e03-4cb9-a1a2-c52557aa5137">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/GGPP%2F_DSC5591.jpg?alt=media&token=5eeeb1a2-8e03-4cb9-a1a2-c52557aa5137">
         <span>Gisleide</span>
       </div>
     </div>
   </section>
 
-  <div class="cta">
+  <section class="cta" data-aos="fade-up" style="padding-bottom: 80px; text-align: center;">
     <button onclick="abrirModal()">Agendar ensaio</button>
-  </div>
+  </section>
 
   <div class="modal" id="modal">
     <div class="modal-content">
@@ -228,7 +267,19 @@
     </div>
   </div>
 
+  <div class="image-modal" id="imageModal" style="display: none;" onclick="fecharImagem()">
+    <div class="image-modal-content" onclick="event.stopPropagation()" style="position: relative;">
+      <button onclick="fecharImagem()"
+        style="position:absolute;top:10px;right:10px;background:#fff;border:none;font-size:24px;padding:4px 12px;border-radius:6px;cursor:pointer;">&times;</button>
+      <img id="modalImage" src="" alt="Visualização">
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+    AOS.init();
+
     function abrirModal() {
       document.getElementById('modal').style.display = 'flex';
     }
@@ -241,6 +292,15 @@
       }
       const mensagem = `Oi, meu nome é ${nome} e quero agendar meu ensaio.`;
       window.open(`https://wa.me/5568996129443?text=${encodeURIComponent(mensagem)}`);
+    }
+
+    function abrirImagem(src) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('imageModal').style.display = 'flex';
+    }
+
+    function fecharImagem() {
+      document.getElementById('imageModal').style.display = 'none';
     }
 
     window.onclick = function (event) {
