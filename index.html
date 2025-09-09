@@ -407,6 +407,9 @@
     </div>
 
     <p class="note">⚠ O valor deve ser pago no ato da contratação (reserva de data).</p>
+    <p class="note" style="color:#444;font-weight:normal;font-size:15px;margin-top:8px;">
+      📌 O orçamento é válido por até <strong>15 dias</strong> após a data de emissão.
+    </p>
 
   </section>
 
@@ -459,6 +462,18 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+
+
+    (function () {
+      var el = document.getElementById('validadeData');
+      if (!el) return;
+      var d = new Date();
+      d.setDate(d.getDate() + 15);
+      var dd = String(d.getDate()).padStart(2, '0');
+      var mm = String(d.getMonth() + 1).padStart(2, '0');
+      var yyyy = d.getFullYear();
+      el.textContent = "(válido até " + dd + "/" + mm + "/" + yyyy + ")";
+    })();
 
     function abrirModal() {
       document.getElementById('modal').style.display = 'flex';
