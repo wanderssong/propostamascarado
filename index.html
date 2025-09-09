@@ -161,7 +161,7 @@
       max-width: 90vw;
       max-height: 80vh;
       border-radius: 8px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      box-shadow: 0 3px 10px rgba(255, 255, 255, 0.8);
       object-fit: contain;
     }
 
@@ -193,20 +193,32 @@
     <h2>Proposta de Ensaio Fotográfico Profissional</h2>
     <p>Oferecemos experiências fotográficas personalizadas com direção criativa, edição de alto padrão e atenção aos
       detalhes que eternizam momentos únicos com sofisticação e sensibilidade.</p>
-    <p class="preco">Investimento: <strong>R$ 300,00</strong> <span style="font-weight: normal;">(valor promocional por
-        tempo limitado)</span></p>
+
+    <p class="preco">
+      Investimento: <strong>R$ 40,00</strong> por pessoa <br>
+      Total para <strong>15 pessoas</strong>: <strong>R$ 600,00</strong> <br>
+      (Média de 10 fotos por pessoa)
+    </p>
+
     <ul>
       <li>✔ Direção de cena personalizada</li>
       <li>✔ Sessão de até 2h em local à escolha</li>
-      <li>✔ 30 fotos tratadas em alta resolução</li>
+      <li>✔ Aproximadamente 10 fotos tratadas por pessoa</li>
       <li>✔ Galeria online com link exclusivo</li>
-      <li>✔ Filmagen com um profissional videomaker</li>
+      <li>✔ Filmagem com profissional videomaker</li>
     </ul>
+
+    <p style="margin-top:20px; font-weight:bold; color:#b22222;">
+      ⚠ O valor deve ser pago no ato da contratação. (reseva de data)
+    </p>
   </section>
 
   <section data-aos="fade-up">
     <h2>Portfólio</h2>
     <div class="gallery">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/KAMYLA%20%26%20GUSTAVO%2F_DSC9565.jpg?alt=media&token=691f0c30-56e0-4e23-8e4a-7af36d070785"
+        onclick="abrirImagem(this.src)">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/PH%26FL%20PARIS%2F_DSC6449.jpg?alt=media&token=fd24e7fd-06aa-4e6d-9410-101917d635d1"
         onclick="abrirImagem(this.src)">
@@ -243,18 +255,16 @@
     <h2>Nossa Equipe</h2>
     <div class="team">
       <div class="team-member">
-        <img
-          src="img/gis.jpeg">
+        <img src="img/gis.jpeg">
         <span>Gislaine (VideoMaker)</span>
       </div>
       <div class="team-member">
-        <img src="img/LOGO.png">
+        <img src="img/wander.jpg">
         <span>El Mascarado (Fotógrafo)</span>
       </div>
       <div class="team-member">
-        <img
-          src="img/gisleide.jpeg">
-        <span>Gisleide(VideoMaker)</span>
+        <img src="img/gisleide.jpeg">
+        <span>Gisleide (VideoMaker)</span>
       </div>
     </div>
   </section>
@@ -278,7 +288,6 @@
       <img id="modalImage" src="" alt="Visualização">
     </div>
   </div>
-
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
