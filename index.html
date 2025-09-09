@@ -181,124 +181,136 @@
       border-radius: 4px;
       cursor: pointer;
     }
-  
-/* --- Instagram FAB --- */
-.insta-fab {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width: 56px;
-  height: 56px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 10px 25px rgba(0,0,0,.15);
-  text-decoration: none;
-  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-  z-index: 1100;
-}
-.insta-fab:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0,0,0,.22);
-}
-.insta-fab img {
-  width: 28px;
-  height: 28px;
-  display: block;
-}
 
-/* --- Pricing (Valores) --- */
-.pricing-card {
-  display: grid;
-  gap: 22px;
-  grid-template-columns: 1fr;
-  padding: 28px;
-  border-radius: 16px;
-  background: linear-gradient(160deg, #ffffff 0%, #f6f6f6 40%, #f1f1f1 100%);
-  border: 1px solid #e8e8e8;
-  box-shadow: 0 20px 40px rgba(0,0,0,.08);
-}
-@media (min-width: 760px) {
-  .pricing-card { grid-template-columns: .9fr 1.1fr; }
-}
+    /* --- Instagram FAB --- */
+    .insta-fab {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      z-index: 1100;
+    }
 
-.badge {
-  display: inline-block;
-  font-size: 12px;
-  letter-spacing: .4px;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: #111;
-  color: #fff;
-}
+    .insta-fab:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .22);
+    }
 
-.price-tag {
-  margin-top: 12px;
-  font-family: 'Playfair Display', serif;
-  font-size: 44px;
-  line-height: 1;
-  color: #111;
-}
-.price-tag small {
-  font-size: 18px;
-  vertical-align: super;
-  margin-right: 2px;
-  color: #b8860b;
-}
-.price-tag span {
-  font-size: 16px;
-  color: #666;
-  margin-left: 6px;
-}
+    .insta-fab img {
+      width: 38px;
+      height: 38px;
+      display: block;
+    }
 
-.price-meta {
-  margin-top: 8px;
-  color: #555;
-  font-size: 15px;
-}
+    /* --- Pricing (Valores) --- */
+    .pricing-card {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr;
+      padding: 28px;
+      border-radius: 16px;
+      background: linear-gradient(160deg, #ffffff 0%, #f6f6f6 40%, #f1f1f1 100%);
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+    }
 
-.total-tag {
-  margin-top: 14px;
-  font-size: 18px;
-  color: #111;
-}
-.total-tag strong {
-  color: #b8860b;
-}
+    @media (min-width: 760px) {
+      .pricing-card {
+        grid-template-columns: .9fr 1.1fr;
+      }
+    }
 
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.features li {
-  display: flex;
-  align-items: start;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px dashed #e3e3e3;
-  color: #333;
-  font-size: 16px;
-}
-.features li:last-child { border-bottom: none; }
-.features li::before {
-  content: "✔";
-  flex: 0 0 auto;
-  font-weight: bold;
-  opacity: .9;
-  color: #0f9d58;
-}
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+    }
 
-.note {
-  margin-top: 14px;
-  font-weight: 600;
-  color: #b22222;
-}
+    .price-tag {
+      margin-top: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      line-height: 1;
+      color: #111;
+    }
 
-</style>
+    .price-tag small {
+      font-size: 18px;
+      vertical-align: super;
+      margin-right: 2px;
+      color: #b8860b;
+    }
+
+    .price-tag span {
+      font-size: 16px;
+      color: #666;
+      margin-left: 6px;
+    }
+
+    .price-meta {
+      margin-top: 8px;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .total-tag {
+      margin-top: 14px;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .total-tag strong {
+      color: #b8860b;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .features li {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #e3e3e3;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features li::before {
+      content: "✔";
+      flex: 0 0 auto;
+      font-weight: bold;
+      opacity: .9;
+      color: #0f9d58;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-weight: 600;
+      color: #b22222;
+    }
+  </style>
 </head>
 
 <body>
@@ -311,27 +323,27 @@
     <p>Oferecemos experiências fotográficas personalizadas com direção criativa, edição de alto padrão e atenção aos
       detalhes que eternizam momentos únicos com sofisticação e sensibilidade.</p>
 
-    
-<div class="pricing-card" data-aos="fade-up">
-  <div>
-    <span class="badge">Pacote Grupo</span>
-    <div class="price-tag"><small>R$</small>40,00 <span>/ pessoa</span></div>
-    <div class="price-meta">15 pessoas • ~10 fotos por pessoa</div>
-    <div class="total-tag">Total: <strong>R$ 600,00</strong></div>
-  </div>
 
-  <div>
-    <ul class="features">
-      <li>Direção de cena personalizada</li>
-      <li>Sessão de até 2h em local à escolha</li>
-      <li>Aproximadamente 10 fotos tratadas por pessoa</li>
-      <li>Galeria online com link exclusivo</li>
-      <li>Filmagem com profissional videomaker</li>
-    </ul>
-  </div>
-</div>
+    <div class="pricing-card" data-aos="fade-up">
+      <div>
+        <span class="badge">Pacote Grupo</span>
+        <div class="price-tag"><small>R$</small>40,00 <span>/ pessoa</span></div>
+        <div class="price-meta">15 pessoas • ~10 fotos por pessoa</div>
+        <div class="total-tag">Total: <strong>R$ 600,00</strong></div>
+      </div>
 
-<p class="note">⚠ O valor deve ser pago no ato da contratação (reserva de data).</p>
+      <div>
+        <ul class="features">
+          <li>Direção de cena personalizada</li>
+          <li>Sessão de até 2h em local à escolha</li>
+          <li>Aproximadamente 10 fotos tratadas por pessoa</li>
+          <li>Galeria online com link exclusivo</li>
+          <li>Filmagem com profissional videomaker</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">⚠ O valor deve ser pago no ato da contratação (reserva de data).</p>
 
   </section>
 
@@ -353,7 +365,7 @@
       <img
         src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/LETICIA%20BRUNA%2F_DSC6739.jpg?alt=media&token=ba59b74d-9f35-41bd-8144-26fdfa2d67a2"
         onclick="abrirImagem(this.src)">
-        <img
+      <img
         src="https://firebasestorage.googleapis.com/v0/b/albuns-mascarado.firebasestorage.app/o/1%C2%B0%20CELLU%2F_DSC8975.jpg?alt=media&token=f8d1a136-46c6-4e40-97c0-4e03bed24e26"
         onclick="abrirImagem(this.src)">
       <img
@@ -449,13 +461,11 @@
     }
   </script>
 
-<!-- Botão flutuante do Instagram -->
-<a class="insta-fab"
-   href="https://instagram.com/SEU_USUARIO_AQUI"
-   target="_blank" rel="noopener"
-   aria-label="Abrir Instagram">
-  <img src="img/instagram.png" alt="Instagram">
-</a>
+  <!-- Botão flutuante do Instagram -->
+  <a class="insta-fab" href="https://www.instagram.com/sr_wandersson?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"
+    aria-label="Abrir Instagram">
+    <img src="img/iconInst.png" alt="Instagram">
+  </a>
 
 </body>
 
